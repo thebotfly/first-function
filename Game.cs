@@ -8,23 +8,29 @@ namespace HelloWorld
    
     {
         bool gameover = false;
+        string playerName = "The Player";
         string name = "";
         void RequestName(ref string name)
         {
             
             char input = ' ';
-            while(input != '1')
-            {
+            
+            
                 Console.Clear();
                 Console.WriteLine("Please enter a new name for" + name);
                 name = Console.ReadLine();
                 Console.WriteLine("Hello" + "name");
                 input = GetInput("Yes", "No", "Are you sure you want this name" + name + "?");
-                if(input == '2')
+            if(input == '1')
+            {
+                return;
+            }
+                else if(input == '2')
                 {
                     Console.WriteLine("Yeah let's get rid of that name, Let's Try again");
+                    RequestName(ref name);
                 }
-            }
+            
         }
         void Explore()
         {
@@ -50,7 +56,18 @@ namespace HelloWorld
             int enemyHealth = 75;
             gameover = StartBattle(ref playerHealth, ref enemyHealth);
 
-        } 
+        }
+        void EnterRoom(int roomNumber)
+        {
+            Console.WriteLine("You are in room " + roomNumber);
+            char input = ' ';
+            input = GetInput("Go forward", "Go back", "Which direction would you like to go?");
+            if(input == '1')
+            {
+                EnterRoom(roomNumber + 1);
+            }
+            Console.WriteLine("You are leaving room" + roomNumber);
+        }
         bool StartBattle(ref int playerHealth,  ref int enemyHealth)
         {
             char input = ' ';
@@ -124,7 +141,8 @@ namespace HelloWorld
         public void Update()
         {
             RequestName(ref name);
-            Explore(); 
+            Explore();
+            EnterRoom(0);
         }
 
 
