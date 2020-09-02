@@ -82,7 +82,7 @@ namespace HelloWorld
             {
                 EnterRoom(roomNumber + 1);
             }
-            
+            Console.WriteLine("You are leaving room" + roomNumber);
             Console.WriteLine(exitmessage);
         }
         bool StartBattle(ref int playerHealth,  ref int enemyHealth)
