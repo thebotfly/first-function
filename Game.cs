@@ -59,6 +59,22 @@ namespace HelloWorld
         }
         void EnterRoom(int roomNumber)
         {
+            string exitmessage = "";
+            if(roomNumber == 0)
+            {
+                exitmessage = "You leave the cave of frozen souls";
+                Console.WriteLine("You stand infront of the entrance to the cave of frozen souls");
+            }
+            else if(roomNumber == 1)
+            {
+                exitmessage = "you leave the entrance to the cave";
+                Console.WriteLine("You step into the cave and you see bodies on spikes and they clearly have been frozen for a long time so they are long dead");
+            }
+            else if(roomNumber == 2)
+            {
+                exitmessage = "You leave the trap room";
+                Console.WriteLine("You enter a room full of traps that can freeze you and kill you");
+            }
             Console.WriteLine("You are in room " + roomNumber);
             char input = ' ';
             input = GetInput("Go forward", "Go back", "Which direction would you like to go?");
@@ -66,7 +82,8 @@ namespace HelloWorld
             {
                 EnterRoom(roomNumber + 1);
             }
-            Console.WriteLine("You are leaving room" + roomNumber);
+            
+            Console.WriteLine(exitmessage);
         }
         bool StartBattle(ref int playerHealth,  ref int enemyHealth)
         {
@@ -141,7 +158,7 @@ namespace HelloWorld
         public void Update()
         {
             RequestName(ref name);
-            Explore();
+            
             EnterRoom(0);
         }
 
