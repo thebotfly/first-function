@@ -8,21 +8,21 @@ namespace HelloWorld
    
     {
         bool gameover = false;
-        string playername = "";
+        string name = "";
         void RequestName()
         {
-            if (playername != "")
+            if ("name" != "")
             {
                 return;
             }
-            char input = '';
+            char input = ' ';
             while(input != '1')
             {
                 Console.Clear();
-                Console.WriteLine("Please enter your name.");
-                playername = Console.ReadLine();
-                Console.WriteLine("Hello" + playername);
-                input = GetInput("Yes", "No", "Are you sure you want this name" + playername);
+                Console.WriteLine("Please enter a new name for" + name);
+                name = Console.ReadLine();
+                Console.WriteLine("Hello" + "name");
+                input = GetInput("Yes", "No", "Are you sure you want this name" + name + "?");
                 if(input == '2')
                 {
                     Console.WriteLine("Yeah let's get rid of that name, Let's Try again");
@@ -31,12 +31,16 @@ namespace HelloWorld
         }
         void Explore()
         {
-            char input = '';
+            string petname = "odd looking dragon";
+            char input = ' ';
             input = GetInput("Go Left", "Go Right", "You come to a Pit");
             if(input == '1')
             {
-                Console.WriteLine("You decide to use a vine but the vine snapped on you and fall into lava");
-                gameover = true;
+                Console.WriteLine("You choose to go around the pit and you find a very odd looking dragon trapped by some other travelers you sneak by them and open the trap freeing the dragon it scared off the other travelers and it starts following you");
+                Console.WriteLine("Do you want to name the dragon");
+                RequestName(ref petname);
+                Console.WriteLine("New name is " + petname);
+                Console.ReadKey();
             }
             else if (input == '2')
             {
@@ -46,14 +50,14 @@ namespace HelloWorld
         } 
         void ViewStats()
         {
-            Console.WriteLine(playername);
+            Console.WriteLine(name);
             Console.WriteLine("Press any key to continue");
             Console.Write(">");
             Console.ReadKey();
         }
         char GetInput(string option1, string option2, string query)
         {
-            char input = '';
+            char input = ' ';
             while(input != '1' && input != '2')
             {
                 Console.WriteLine(query);
@@ -93,7 +97,7 @@ namespace HelloWorld
         //Repeated until the game ends
         public void Update()
         {
-            RequestName();
+            RequestName(ref name);
             Explore(); 
         }
 
