@@ -36,7 +36,7 @@ namespace HelloWorld
             {
                 Console.WriteLine("You choose to go around the pit and you find a very odd looking dragon trapped by some other travelers you sneak by them and open the trap freeing the dragon it scared off the other travelers and it starts following you");
                 Console.WriteLine("Do you want to name the dragon");
-                RequestName(ref enemyname);
+                RequestName(ref petname);
                 Console.WriteLine("New name is " + petname);
                 Console.ReadKey();
             }
@@ -45,10 +45,13 @@ namespace HelloWorld
                 Console.WriteLine("You cross the old bridge and head to the castle");
             }
             Console.Clear();
-            Console.WriteLine("Start fight encounter");
+            Console.WriteLine("One of the travelers runs at you wanting to kill you for freeing that dragon that they were going eat");
+            int playerHealth = 150;
+            int enemyHealth = 75;
+            gameover = StartBattle(ref playerHealth, ref enemyHealth);
 
         } 
-        bool StartBattle(ref int playerHealth, int enemyHealth)
+        bool StartBattle(ref int playerHealth,  ref int enemyHealth)
         {
             char input = ' ';
             while(playerHealth > 0 && enemyHealth > 0)
@@ -64,7 +67,7 @@ namespace HelloWorld
                     Console.ReadKey();
                     continue;
                 }
-                playerHealth = 30;
+                playerHealth = 150;
                 Console.WriteLine("The enemy attacked and 5 damage!");
                 Console.ReadKey();
             }
