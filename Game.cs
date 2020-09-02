@@ -32,13 +32,14 @@ namespace HelloWorld
         void Explore()
         {
             string petname = "odd looking dragon";
+            string enemyname = "wild gunman";
             char input = ' ';
             input = GetInput("Go Left", "Go Right", "You come to a Pit");
             if(input == '1')
             {
                 Console.WriteLine("You choose to go around the pit and you find a very odd looking dragon trapped by some other travelers you sneak by them and open the trap freeing the dragon it scared off the other travelers and it starts following you");
                 Console.WriteLine("Do you want to name the dragon");
-                RequestName(ref petname);
+                RequestName(ref enemyname);
                 Console.WriteLine("New name is " + petname);
                 Console.ReadKey();
             }
@@ -46,8 +47,33 @@ namespace HelloWorld
             {
                 Console.WriteLine("You cross the old bridge and head to the castle");
             }
+            Console.Clear();
+            Console.WriteLine("Start fight encounter");
 
         } 
+        bool StartBattle(ref int playerHealth, int enemyHealth)
+        {
+            char input = ' ';
+            while(playerHealth > 0 && enemyHealth > 0)
+            {
+                input = GetInput("Attack", "Defend", "What will you do");
+                if(input == '1')
+                {
+                    Console.WriteLine("You attacked and did 15 damage");
+                }
+                else if(input == '2')
+                {
+                    Console.WriteLine("You blocked the enemy's attack and took less damage");
+                    Console.ReadKey();
+                    continue;
+                }
+                playerHealth = 30;
+                Console.WriteLine("The enemy attacked and 5 damage!");
+                Console.ReadKey();
+            }
+            return playerHealth <= 0;
+            
+        }
         void ViewStats()
         {
             Console.WriteLine(name);
