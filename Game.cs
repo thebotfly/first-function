@@ -9,12 +9,9 @@ namespace HelloWorld
     {
         bool gameover = false;
         string name = "";
-        void RequestName()
+        void RequestName(ref string name)
         {
-            if ("name" != "")
-            {
-                return;
-            }
+            
             char input = ' ';
             while(input != '1')
             {
